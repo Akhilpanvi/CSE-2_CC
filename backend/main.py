@@ -291,6 +291,11 @@ def upload_excel(
     }
 
 
+@app.get("/api/admin/stats")
+def admin_stats(current_admin: str = Depends(get_current_admin)):
+    return student_service.get_stats()
+
+
 @app.get("/api/admin/report")
 def admin_report(
     scope: str = "all",

@@ -473,6 +473,106 @@ def authenticate_admin(username, password):
 
 
 # ============================================================
+# ADMIN: STATS
+# ============================================================
+
+def get_stats():
+    """
+    Replacement adoption stats. "Eligible" respects the current
+    access policy, so pending counts reflect who can actually act now.
+    """
+
+    placed_only = get_settings()["replacement_access"] == "PLACED"
+
+    semesters = {
+        semester: {"eligible": 0, "submitted": 0, "pending": 0, "locked": 0}
+        for semester in SEMESTERS
+    }
+
+    total = 0
+    placed_count = 0
+    registered_4_1 = 0
+    registered_4_2 = 0
+    students_with_replacement = 0
+    rows = []
+
+    for student in students_collection.find({}, {"_id": 0}):
+
+        total += 1
+
+        student_placed = is_student_placed(student.get("placed"))
+
+        if student_placed:
+            placed_count += 1
+
+        if student.get("current_4_1"):
+            registered_4_1 += 1
+
+        if student.get("current_4_2"):
+            registered_4_2 += 1
+
+        allowed = student_placed if placed_only else True
+        has_replacement = False
+
+        for semester in SEMESTERS:
+
+            data = student.get("history", {}).get(semester, {})
+            code = data.get("replacement_code")
+
+            eligible = can_replace(
+                data.get("course_code"),
+                data.get("erp_status"),
+                data.get("current_status")
+            ) and allowed
+
+            if eligible:
+                semesters[semester]["eligible"] += 1
+
+            if code:
+                has_replacement = True
+                semesters[semester]["submitted"] += 1
+
+                if data.get("replacement_locked"):
+                    semesters[semester]["locked"] += 1
+
+                rows.append({
+                    "student_id": student.get("student_id"),
+                    "student_name": student.get("student_name"),
+                    "placed": student.get("placed", ""),
+                    "semester": semester,
+                    "original_code": data.get("course_code", ""),
+                    "replacement_code": code,
+                    "replacement_name": data.get("replacement_name", ""),
+                    "locked": bool(data.get("replacement_locked"))
+                })
+
+        if has_replacement:
+            students_with_replacement += 1
+
+    for semester in SEMESTERS:
+        stats = semesters[semester]
+        stats["pending"] = max(stats["eligible"] - stats["submitted"], 0)
+
+    rows.sort(key=lambda r: (r["student_id"], r["semester"]))
+
+    return {
+        "total_students": total,
+        "placed": placed_count,
+        "not_placed": total - placed_count,
+        "replacement_access": "PLACED" if placed_only else "ALL",
+        "students_with_replacement": students_with_replacement,
+        "replacements_submitted": len(rows),
+        "eligible_total": sum(s["eligible"] for s in semesters.values()),
+        "pending_total": sum(s["pending"] for s in semesters.values()),
+        "registered_4_1": registered_4_1,
+        "pending_4_1": total - registered_4_1,
+        "registered_4_2": registered_4_2,
+        "semesters": semesters,
+        "replacements": rows
+    }
+
+
+# ============================================================
 # ADMIN: REPLACEMENT LOCK
 # ============================================================
 

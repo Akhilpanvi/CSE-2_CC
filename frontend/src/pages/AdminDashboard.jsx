@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../Logo";
 import AdminsPanel from "./admin/AdminsPanel";
 import SettingsPanel from "./admin/SettingsPanel";
+import StatsPanel from "./admin/StatsPanel";
 import StudentsPanel from "./admin/StudentsPanel";
 import UploadPanel from "./admin/UploadPanel";
 import { useAuth } from "../useAuth";
 
 const TABS = [
+  { key: "overview", label: "Overview" },
   { key: "students", label: "Students" },
   { key: "settings", label: "Settings" },
   { key: "upload", label: "Data & Reports" },
@@ -20,7 +22,7 @@ function AdminDashboard() {
   const navigate = useNavigate();
   const { auth, logout } = useAuth();
 
-  const [activeTab, setActiveTab] = useState("students");
+  const [activeTab, setActiveTab] = useState("overview");
 
 
   function handleLogout() {
@@ -62,6 +64,7 @@ function AdminDashboard() {
           ))}
         </div>
 
+        {activeTab === "overview" && <StatsPanel />}
         {activeTab === "students" && <StudentsPanel />}
         {activeTab === "settings" && <SettingsPanel />}
         {activeTab === "upload" && <UploadPanel />}

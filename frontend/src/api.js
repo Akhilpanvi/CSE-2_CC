@@ -165,6 +165,14 @@ export async function replaceCourse(
 // ADMIN: SETTINGS
 // ==================================================
 
+export async function getStats() {
+
+  const response = await API.get("/api/admin/stats");
+
+  return response.data;
+}
+
+
 export async function downloadReport(scope) {
 
   const response = await API.get("/api/admin/report", {
