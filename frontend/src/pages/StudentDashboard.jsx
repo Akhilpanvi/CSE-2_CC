@@ -688,6 +688,26 @@ function StudentDashboard() {
               </div>
 
 
+              <div className="profile-summary student-profile">
+
+                <div>
+                  <p className="label">Faculty Incharge</p>
+                  <h2>{student.faculty_incharge || "—"}</h2>
+                </div>
+
+                <div>
+                  <p className="label">Counsellor</p>
+                  <h2>{student.counsellor_name || "—"}</h2>
+                </div>
+
+                <div>
+                  <p className="label">Placement</p>
+                  <h2>{student.placed || "Not Placed"}</h2>
+                </div>
+
+              </div>
+
+
               <div className="stats">
 
                 <div className="stat">

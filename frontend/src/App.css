@@ -1045,3 +1045,24 @@ footer {
   font-weight: 600;
   text-decoration: none;
 }
+
+
+/* PROFILE SUMMARY */
+
+.profile-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 18px;
+}
+
+.profile-summary h2 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.student-profile {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid #E8E3D3;
+}

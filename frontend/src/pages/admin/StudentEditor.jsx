@@ -50,6 +50,9 @@ function StudentEditor() {
 
       setForm({
         student_name: data.student_name || "",
+        faculty_incharge: data.faculty_incharge || "",
+        counsellor_name: data.counsellor_name || "",
+        counsellor_emp_id: data.counsellor_emp_id || "",
         placed: data.placed || "",
         required: data.required ?? "",
         total_registered: data.total_registered ?? "",
@@ -258,11 +261,73 @@ function StudentEditor() {
 
           <section className="card">
 
+            <div className="profile-summary">
+              <div>
+                <p className="label">Student ID</p>
+                <h2>{student.student_id}</h2>
+              </div>
+              <div>
+                <p className="label">Name</p>
+                <h2>{student.student_name || "—"}</h2>
+              </div>
+              <div>
+                <p className="label">Faculty Incharge</p>
+                <h2>{student.faculty_incharge || "—"}</h2>
+              </div>
+              <div>
+                <p className="label">Counsellor</p>
+                <h2>{student.counsellor_name || "—"}</h2>
+              </div>
+              <div>
+                <p className="label">Placement</p>
+                <h2>{student.placed || "Not Placed"}</h2>
+              </div>
+            </div>
+
+          </section>
+
+
+          <section className="card">
+
             <div className="section-title">
               <h2>Student Details</h2>
             </div>
 
             <div className="editor-grid">
+
+              <div className="form-field">
+                <label>Faculty Incharge</label>
+                <input
+                  type="text"
+                  value={form.faculty_incharge}
+                  onChange={(e) =>
+                    updateField("faculty_incharge", e.target.value)
+                  }
+                />
+              </div>
+
+              <div className="form-field">
+                <label>Counsellor Name</label>
+                <input
+                  type="text"
+                  value={form.counsellor_name}
+                  onChange={(e) =>
+                    updateField("counsellor_name", e.target.value)
+                  }
+                />
+              </div>
+
+              <div className="form-field">
+                <label>Counsellor EMP ID</label>
+                <input
+                  type="text"
+                  value={form.counsellor_emp_id}
+                  onChange={(e) =>
+                    updateField("counsellor_emp_id", e.target.value)
+                  }
+                />
+              </div>
+
 
               <div className="form-field">
                 <label>Name</label>

@@ -80,6 +80,9 @@ class SettingsUpdateRequest(BaseModel):
 
 class StudentUpdateRequest(BaseModel):
     student_name: Optional[str] = None
+    faculty_incharge: Optional[str] = None
+    counsellor_name: Optional[str] = None
+    counsellor_emp_id: Optional[str] = None
     placed: Optional[str] = None
     required: Optional[int] = None
     total_registered: Optional[int] = None

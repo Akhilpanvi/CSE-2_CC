@@ -202,6 +202,9 @@ def get_student_dashboard(student_id):
     return {
         "student_id": student["student_id"],
         "student_name": student["student_name"],
+        "faculty_incharge": student.get("faculty_incharge", ""),
+        "counsellor_name": student.get("counsellor_name", ""),
+        "counsellor_emp_id": student.get("counsellor_emp_id", ""),
         "placed": student["placed"],
         "required": student["required"],
         "total_registered": student["total_registered"],
@@ -701,6 +704,9 @@ def create_student(student_id, student_name, extra_fields=None):
     document = {
         "student_id": student_id,
         "student_name": student_name,
+        "faculty_incharge": "",
+        "counsellor_name": "",
+        "counsellor_emp_id": "",
         "placed": "",
         "required": None,
         "total_registered": None,
@@ -726,6 +732,9 @@ def create_student(student_id, student_name, extra_fields=None):
 
 STUDENT_EDITABLE_FIELDS = {
     "student_name",
+    "faculty_incharge",
+    "counsellor_name",
+    "counsellor_emp_id",
     "placed",
     "required",
     "total_registered",
