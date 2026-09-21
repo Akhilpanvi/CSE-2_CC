@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment
+.env
+
+# Student/Excel data
+*.xlsx
+*.xls
+
+# Node
+node_modules/
+dist/
+
+# macOS
+.DS_Store
+
+# Sample upload format (dummy data only)
+!backend/sample_upload_format.xlsx

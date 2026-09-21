@@ -1,0 +1,975 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  background: #FFFFF0;
+  color: #0F172A;
+}
+
+
+.app {
+  min-height: 100vh;
+}
+
+
+/* HEADER */
+
+.header {
+  background: #0F172A;
+  color: white;
+  padding: 42px 20px;
+}
+
+
+.header-content {
+  max-width: 1050px;
+  margin: auto;
+}
+
+
+.header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+
+.header p {
+  margin: 8px 0 0;
+  color: #D6D0BB;
+}
+
+
+/* MAIN */
+
+.container {
+  max-width: 1050px;
+  margin: 35px auto;
+  padding: 0 20px;
+}
+
+
+/* CARD */
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 22px;
+
+  box-shadow:
+    0 4px 18px
+    rgba(15, 23, 42, 0.07);
+}
+
+
+.card h2 {
+  margin-top: 0;
+}
+
+
+/* SEARCH */
+
+.search-card h2 {
+  margin-bottom: 8px;
+}
+
+
+.description {
+  color: #6F6A59;
+}
+
+
+.search-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+
+.search-row input {
+  flex: 1;
+
+  padding: 14px 16px;
+
+  border: 1px solid #D6D0BB;
+
+  border-radius: 8px;
+
+  font-size: 16px;
+
+  outline: none;
+}
+
+
+.search-row input:focus {
+  border-color: #B8860B;
+}
+
+
+button {
+  border: none;
+
+  background: #B8860B;
+
+  color: white;
+
+  padding: 13px 22px;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+button:hover {
+  background: #8B6508;
+}
+
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* STUDENT */
+
+.student-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+
+.label {
+  margin: 0 0 5px;
+
+  font-size: 13px;
+
+  color: #6F6A59;
+
+  text-transform: uppercase;
+
+  font-weight: 600;
+}
+
+
+.student-header h2 {
+  margin: 0;
+
+  font-size: 21px;
+}
+
+
+/* STATS */
+
+.stats {
+  display: flex;
+  gap: 15px;
+
+  margin-top: 25px;
+}
+
+
+.stat {
+  background: #FAF9EC;
+
+  border: 1px solid #E8E3D3;
+
+  border-radius: 10px;
+
+  padding: 18px 30px;
+
+  min-width: 150px;
+}
+
+
+.stat span {
+  display: block;
+
+  color: #6F6A59;
+
+  font-size: 13px;
+}
+
+
+.stat strong {
+  display: block;
+
+  font-size: 28px;
+
+  margin-top: 4px;
+}
+
+
+/* SECTION */
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+
+.section-title h2 {
+  margin-bottom: 5px;
+}
+
+
+.section-title p {
+  color: #6F6A59;
+
+  margin: 0;
+}
+
+
+/* HISTORY */
+
+.semester {
+  border: 1px solid #E8E3D3;
+
+  border-radius: 10px;
+
+  margin-bottom: 14px;
+
+  overflow: hidden;
+}
+
+
+.semester-title {
+  background: #FAF9EC;
+
+  padding: 12px 18px;
+
+  font-weight: 700;
+}
+
+
+.registered-course {
+  display: flex;
+
+  gap: 14px;
+
+  padding: 18px;
+}
+
+
+.check {
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #dcfce7;
+
+  color: #15803d;
+
+  font-weight: bold;
+}
+
+
+.course-code {
+  font-weight: 700;
+
+  color: #B8860B;
+
+  margin-bottom: 5px;
+}
+
+
+.course-name {
+  line-height: 1.5;
+}
+
+
+.no-course {
+  padding: 18px;
+
+  color: #A39C88;
+}
+
+
+/* CURRENT REGISTRATION */
+
+.current-registration {
+  display: flex;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+  background: #FDF8E7;
+}
+
+
+.status-icon {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background: #dcfce7;
+
+  color: #15803d;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-weight: bold;
+}
+
+
+.current-registration h3 {
+  margin: 0 0 7px;
+}
+
+
+.current-registration p {
+  margin: 0;
+
+  line-height: 1.5;
+}
+
+
+/* REGISTRATION */
+
+.registration-info {
+  padding: 18px;
+
+  background: #FAF9EC;
+
+  border-radius: 10px;
+
+  margin-bottom: 20px;
+}
+
+
+.registration-info h3 {
+  margin-top: 0;
+}
+
+
+.registration-info p {
+  color: #6F6A59;
+}
+
+
+/* COURSES */
+
+.course-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+
+.course-option {
+  display: flex;
+
+  gap: 14px;
+
+  padding: 17px;
+
+  border: 1px solid #E8E3D3;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: 0.15s;
+}
+
+
+.course-option:hover {
+  background: #FAF9EC;
+}
+
+
+.course-option.selected {
+  border-color: #B8860B;
+
+  background: #FDF8E7;
+}
+
+
+.course-option input {
+  margin-top: 5px;
+}
+
+
+.option-code {
+  color: #B8860B;
+
+  font-weight: 700;
+
+  margin-bottom: 5px;
+}
+
+
+.option-name {
+  line-height: 1.5;
+}
+
+
+/* SUBMIT */
+
+.submit-button {
+  width: 100%;
+
+  margin-top: 22px;
+
+  padding: 15px;
+
+  font-size: 16px;
+}
+
+
+/* ALERT */
+
+.alert {
+  padding: 15px 18px;
+
+  border-radius: 9px;
+
+  margin-bottom: 20px;
+
+  font-weight: 500;
+}
+
+
+.error {
+  background: #fee2e2;
+
+  color: #991b1b;
+}
+
+
+.success {
+  background: #dcfce7;
+
+  color: #166534;
+}
+
+
+.no-courses {
+  margin-top: 20px;
+
+  padding: 18px;
+
+  background: #FAF9EC;
+
+  color: #6F6A59;
+
+  border-radius: 9px;
+}
+
+
+/* AUTH FORMS */
+
+.auth-card {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+
+.form-field {
+  margin-bottom: 16px;
+}
+
+
+.form-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+
+.form-field input[type="text"],
+.form-field input[type="password"],
+.form-field input[type="file"] {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #D6D0BB;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+
+.form-field input:focus {
+  border-color: #B8860B;
+}
+
+
+.auth-switch {
+  margin-top: 18px;
+  text-align: center;
+  color: #6F6A59;
+  font-size: 14px;
+}
+
+
+.auth-switch a {
+  color: #B8860B;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+/* ADMIN HEADER */
+
+.admin-header-content {
+  max-width: 1050px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.logout-button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+
+.logout-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* ADMIN DASHBOARD */
+
+.inline-form {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+
+.inline-form .form-field {
+  margin-bottom: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid #E8E3D3;
+  font-size: 14px;
+}
+
+
+.admin-table th {
+  color: #6F6A59;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+
+.danger-button {
+  background: #dc2626;
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+
+.danger-button:hover {
+  background: #b91c1c;
+}
+
+
+.danger-button:disabled {
+  background: #E8E3D3;
+  color: #A39C88;
+}
+
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+
+  padding: 30px;
+
+  color: #A39C88;
+
+  font-size: 13px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+
+  .student-header {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+
+  .search-row {
+    flex-direction: column;
+  }
+
+
+  .stats {
+    flex-direction: column;
+  }
+
+
+  .stat {
+    width: 100%;
+  }
+
+}
+
+
+/* -----------------------------------------
+   CERTIFICATION STATUS
+----------------------------------------- */
+
+.status-section {
+  padding: 16px 18px;
+
+  border-top: 1px solid #E8E3D3;
+}
+
+
+.status-heading {
+  font-size: 13px;
+
+  color: #6F6A59;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  margin-bottom: 8px;
+}
+
+
+.status-badge {
+  display: inline-block;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+.status-badge.success {
+  background: #dcfce7;
+
+  color: #166534;
+}
+
+
+.status-badge.warning {
+  background: #FDF3D0;
+
+  color: #CA8A04;
+}
+
+
+.status-badge.neutral {
+  background: #E8E3D3;
+
+  color: #4A4538;
+}
+
+
+/* -----------------------------------------
+   REPLACEMENT
+----------------------------------------- */
+
+.replacement-section {
+  margin-top: 0;
+
+  padding: 20px 18px;
+
+  border-top: 1px solid #E8E3D3;
+
+  background: #fafcff;
+}
+
+
+.replacement-question strong {
+  font-size: 16px;
+}
+
+
+.replacement-question p {
+  margin: 7px 0 16px;
+
+  color: #6F6A59;
+
+  line-height: 1.5;
+}
+
+
+.radio-row {
+  display: flex;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
+}
+
+
+.radio-option {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 18px;
+
+  border: 1px solid #E8E3D3;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  background: white;
+
+  font-weight: 600;
+}
+
+
+.radio-option.active {
+  border-color: #B8860B;
+
+  background: #FDF8E7;
+
+  color: #8B6508;
+}
+
+
+.radio-option input {
+  accent-color: #B8860B;
+}
+
+
+/* -----------------------------------------
+   REPLACEMENT SELECTOR
+----------------------------------------- */
+
+.replacement-selector {
+  padding: 18px;
+
+  border-radius: 10px;
+
+  background: white;
+
+  border: 1px solid #E8E3D3;
+}
+
+
+.replacement-selector label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-weight: 700;
+
+  font-size: 14px;
+}
+
+
+.replacement-selector select {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  border: 1px solid #D6D0BB;
+
+  border-radius: 8px;
+
+  background: white;
+
+  font-size: 14px;
+
+  color: #0F172A;
+
+  cursor: pointer;
+}
+
+
+.replacement-selector select:focus {
+  outline: none;
+
+  border-color: #B8860B;
+}
+
+
+.replace-button {
+  width: 100%;
+
+  margin-top: 15px;
+
+  padding: 13px;
+}
+
+
+/* -----------------------------------------
+   REPLACEMENT COMPLETED
+----------------------------------------- */
+
+.replacement-completed {
+  padding: 18px;
+
+  border-top: 1px solid #E8E3D3;
+
+  background: #f0fdf4;
+}
+
+
+.replacement-title {
+  font-size: 13px;
+
+  text-transform: uppercase;
+
+  font-weight: 700;
+
+  color: #166534;
+
+  margin-bottom: 8px;
+}
+
+
+.replacement-code {
+  font-weight: 700;
+
+  color: #B8860B;
+
+  margin-bottom: 5px;
+}
+
+
+.replacement-name {
+  line-height: 1.5;
+}
+
+
+.replacement-success {
+  margin-top: 10px;
+
+  font-size: 13px;
+
+  color: #15803d;
+
+  font-weight: 600;
+}
+
+
+.no-replacement {
+  margin-top: 12px;
+
+  padding: 12px;
+
+  border-radius: 7px;
+
+  background: #fef2f2;
+
+  color: #991b1b;
+
+  font-size: 13px;
+}
+
+
+/* ADMIN TABS / EDITOR */
+
+.tab-row { display: flex; gap: 8px; margin-bottom: 22px; flex-wrap: wrap; }
+.tab-button { background: #E8E3D3; color: #0F172A; }
+.tab-button:hover { background: #D6D0BB; }
+.tab-button.active { background: #B8860B; color: white; }
+
+.table-actions { display: flex; gap: 12px; align-items: center; }
+.table-actions a { color: #B8860B; font-weight: 600; text-decoration: none; }
+
+.pagination { display: flex; gap: 14px; align-items: center; justify-content: center; margin-top: 20px; }
+
+.editor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.editor-grid .form-field { margin-bottom: 0; }
+.form-field input[type="number"] { width: 100%; padding: 13px 14px; border: 1px solid #D6D0BB; border-radius: 8px; font-size: 15px; }
+.semester-editor-title { display: flex; justify-content: space-between; align-items: center; }
+.editor-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.create-form { margin-top: 16px; }
+
+
+/* RESORTLUX BRANDING */
+
+.brand-logo {
+  display: block;
+  height: 44px;
+  width: auto;
+  margin-bottom: 18px;
+  background: #FFFFF0;
+  padding: 9px 16px;
+  border-radius: 10px;
+}
+
+/* gold accent line under every header */
+.header {
+  border-bottom: 3px solid #B8860B;
+}
+
+.status-badge.success { background: #DCFCE7; color: #15803D; }
+.status-badge.warning { background: #FDF3D0; color: #CA8A04; }
+
+@media (max-width: 700px) {
+  .brand-logo { height: 34px; padding: 7px 12px; }
+  .admin-header-content { flex-direction: column; align-items: flex-start; }
+}
+
+.header-actions { display: flex; gap: 10px; flex-shrink: 0; }
+@media (max-width: 700px) { .header-actions { width: 100%; } }
