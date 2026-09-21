@@ -977,53 +977,59 @@ footer {
 
 /* STATS OVERVIEW */
 
-.stat-tiles {
+.donut-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
 }
 
-.stat-tile {
-  background: #FAF9EC;
-  border: 1px solid #E8E3D3;
-  border-left: 3px solid #B8860B;
-  border-radius: 10px;
-  padding: 16px 18px;
+.donut-card {
+  margin: 0;
+  text-align: center;
 }
 
-.stat-tile span {
+.donut {
+  width: 100%;
+  max-width: 168px;
+  height: auto;
+}
+
+.donut-track {
+  fill: none;
+  stroke: #E8E3D3;
+  stroke-width: 14;
+}
+
+.donut-value {
+  fill: none;
+  stroke: #B8860B;
+  stroke-width: 14;
+  stroke-linecap: round;
+}
+
+.donut-pct {
+  text-anchor: middle;
+  font-size: 26px;
+  font-weight: 700;
+  fill: #0F172A;
+}
+
+.donut-sub {
+  text-anchor: middle;
+  font-size: 12px;
+  fill: #6F6A59;
+}
+
+.donut-card figcaption strong {
   display: block;
-  color: #6F6A59;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.stat-tile strong {
-  display: block;
-  font-size: 30px;
-  margin-top: 6px;
+  margin-top: 10px;
+  font-size: 15px;
   color: #0F172A;
 }
 
-/* single-hue magnitude meter */
-.meter {
-  display: inline-block;
-  vertical-align: middle;
-  width: 120px;
-  height: 8px;
-  background: #E8E3D3;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.meter-fill {
-  height: 100%;
-  background: #B8860B;
-  border-radius: 4px;
-}
-
-.meter-label {
-  margin-left: 10px;
+.donut-card figcaption span {
+  display: block;
+  margin-top: 3px;
   font-size: 13px;
   color: #6F6A59;
 }
@@ -1034,4 +1040,8 @@ footer {
   margin-top: 3px;
 }
 
-.admin-table a { color: #B8860B; font-weight: 600; text-decoration: none; }
+.admin-table a {
+  color: #B8860B;
+  font-weight: 600;
+  text-decoration: none;
+}
