@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { createAdmin, deleteAdmin, listAdmins } from "../../api";
+import {
+  changeAdminPassword,
+  createAdmin,
+  deleteAdmin,
+  listAdmins
+} from "../../api";
 import { useAuth } from "../../useAuth";
 
 function AdminsPanel() {
@@ -13,6 +18,53 @@ function AdminsPanel() {
   const [adminError, setAdminError] = useState("");
   const [adminMessage, setAdminMessage] = useState("");
   const [adminLoading, setAdminLoading] = useState(false);
+
+  const [currentPw, setCurrentPw] = useState("");
+  const [newPw, setNewPw] = useState("");
+  const [confirmPw, setConfirmPw] = useState("");
+  const [pwError, setPwError] = useState("");
+  const [pwMessage, setPwMessage] = useState("");
+  const [pwLoading, setPwLoading] = useState(false);
+
+
+  async function handleChangePassword(e) {
+
+    e.preventDefault();
+
+    setPwError("");
+    setPwMessage("");
+
+    if (!currentPw || !newPw) {
+      setPwError("Enter your current and new password.");
+      return;
+    }
+
+    if (newPw !== confirmPw) {
+      setPwError("New passwords do not match.");
+      return;
+    }
+
+    setPwLoading(true);
+
+    try {
+
+      await changeAdminPassword(currentPw, newPw);
+
+      setPwMessage("Password updated.");
+      setCurrentPw("");
+      setNewPw("");
+      setConfirmPw("");
+
+    } catch (err) {
+
+      setPwError(
+        err.response?.data?.detail || "Could not change password."
+      );
+
+    } finally {
+      setPwLoading(false);
+    }
+  }
 
 
   async function refreshAdmins() {
@@ -96,6 +148,56 @@ function AdminsPanel() {
 
   return (
 
+    <>
+
+    <section className="card">
+
+      <div className="section-title">
+        <h2>Change My Password</h2>
+        <p>Signed in as <strong>{auth?.id}</strong>.</p>
+      </div>
+
+      <form onSubmit={handleChangePassword} className="inline-form">
+
+        <div className="form-field">
+          <label>Current Password</label>
+          <input
+            type="password"
+            value={currentPw}
+            onChange={(e) => setCurrentPw(e.target.value)}
+          />
+        </div>
+
+        <div className="form-field">
+          <label>New Password</label>
+          <input
+            type="password"
+            value={newPw}
+            onChange={(e) => setNewPw(e.target.value)}
+            placeholder="At least 8 characters"
+          />
+        </div>
+
+        <div className="form-field">
+          <label>Confirm New Password</label>
+          <input
+            type="password"
+            value={confirmPw}
+            onChange={(e) => setConfirmPw(e.target.value)}
+          />
+        </div>
+
+        <button type="submit" disabled={pwLoading}>
+          {pwLoading ? "Saving..." : "Change Password"}
+        </button>
+
+      </form>
+
+      {pwError && <div className="alert error">{pwError}</div>}
+      {pwMessage && <div className="alert success">{pwMessage}</div>}
+
+    </section>
+
     <section className="card">
 
       <div className="section-title">
@@ -165,6 +267,8 @@ function AdminsPanel() {
       </table>
 
     </section>
+
+    </>
   );
 }
 

@@ -114,7 +114,7 @@ to accept connections from the host's IP range.
 
 ### Known gaps
 - No rate limiting on login, so the API is open to password guessing.
-- Changing a password does not ask for the current one, so an unattended
+- Student password changes do not ask for the current one, so an unattended
   logged-in session can be taken over.
 - Hiding the admin login is obscurity, not protection. `/api/auth/admin/login`
   is still reachable directly.

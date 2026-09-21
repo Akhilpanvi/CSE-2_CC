@@ -69,6 +69,11 @@ class AdminCreateRequest(BaseModel):
     password: str
 
 
+class AdminChangePasswordRequest(BaseModel):
+    current_password: str
+    new_password: str
+
+
 class StudentCreateRequest(BaseModel):
     student_id: str
     student_name: str
@@ -199,6 +204,34 @@ def admin_login(request: AdminLoginRequest):
         "token_type": "bearer",
         "username": admin["username"]
     }
+
+
+@app.post("/api/auth/admin/change-password")
+def admin_change_password(
+    request: AdminChangePasswordRequest,
+    current_admin: str = Depends(get_current_admin)
+):
+
+    if not student_service.authenticate_admin(
+        current_admin, request.current_password
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail="Current password is incorrect."
+        )
+
+    if len(request.new_password) < 8:
+        raise HTTPException(
+            status_code=400,
+            detail="Password must be at least 8 characters."
+        )
+
+    admins_collection.update_one(
+        {"username": current_admin},
+        {"$set": {"password_hash": hash_password(request.new_password)}}
+    )
+
+    return {"success": True, "message": "Password updated."}
 
 
 @app.post("/api/auth/admin/create")

@@ -59,6 +59,17 @@ export async function adminLogin(username, password) {
 }
 
 
+export async function changeAdminPassword(currentPassword, newPassword) {
+
+  const response = await API.post(
+    "/api/auth/admin/change-password",
+    { current_password: currentPassword, new_password: newPassword }
+  );
+
+  return response.data;
+}
+
+
 export async function createAdmin(username, password) {
 
   const response = await API.post(
